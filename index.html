@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系车主</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+        }
+        .emoji {
+            display: inline-block;
+            font-size: 24px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .call-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .call-button:hover {
+            background-color: #0056b3;
+        }
+        .detail {
+            background-color: antiquewhite
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>联系车主</h2>
+        <p class = "detail">点击下方按钮拨打车主电话</p>
+        <p><span class="emoji">👇👇👇👇</span></p>
+        <a id="call-link" href="#" class="call-button">拨打电话</a>
+    </div>
+
+    <script>
+        // 获取当前URL中的查询参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const telNumber = urlParams.get('tel'); // 获取'tel'参数的值
+
+        // 获取按钮元素
+        const callLink = document.getElementById('call-link');
+
+        // 检查是否有电话号码并动态更新链接
+        if (telNumber) {
+            callLink.href = `tel:${telNumber}`;
+        } else {
+            callLink.textContent = '电话号码无效';
+            callLink.style.backgroundColor = '#ccc';
+            callLink.style.cursor = 'not-allowed';
+        }
+    </script>
+
+</body>
+</html>
